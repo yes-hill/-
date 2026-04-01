@@ -4,684 +4,539 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>便利店一站式全套厂家货源 | 设备采购平台</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            font-family: 'Segoe UI', Roboto, 'Microsoft YaHei', 'PingFang SC', sans-serif;
         }
 
-        /* 红、绿、蓝 动态渐变背景 */
         body {
-            background: linear-gradient(135deg, #e63946 0%, #2e7d32 45%, #1e3c72 100%);
+            background: linear-gradient(145deg, #c72a2a 0%, #2c7840 45%, #1a4d8c 100%);
             background-attachment: fixed;
-            min-height: 100vh;
-            padding: 0 0 40px 0;
+            color: #1e2a3a;
+            line-height: 1.5;
         }
 
-        /* 主容器半透磨砂感，增强可读性 */
-        .main-wrapper {
+        .main-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 20px 24px 40px;
-            backdrop-filter: brightness(1.02);
+            padding: 20px 24px 50px;
         }
 
-        /* 标题区域 */
-        .hero-title {
+        .hero-section {
             text-align: center;
-            padding: 30px 20px 20px;
-            margin-bottom: 30px;
-            background: rgba(255,255,255,0.92);
-            border-radius: 60px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            backdrop-filter: blur(2px);
+            margin-bottom: 35px;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 70px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(4px);
         }
-        .hero-title h1 {
-            font-size: 2.6rem;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #c72a2a, #1f5e1f, #0f2c4e);
+        .hero-section h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #b91c1c, #2b6e3c, #0f4c81);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.05);
-            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
         }
-        .hero-title p {
-            color: #333;
-            margin-top: 10px;
-            font-size: 1.1rem;
+        .hero-section p {
+            font-size: 1.2rem;
+            color: #2c3e50;
             font-weight: 500;
         }
+        .hero-badge {
+            display: inline-block;
+            background: #f7b32b;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #2d2f36;
+        }
 
-        /* 轮播区 - 置顶滑动 */
+        /* 轮播 */
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 32px;
+            overflow: hidden;
+            margin-bottom: 55px;
+            box-shadow: 0 25px 35px rgba(0, 0, 0, 0.25);
+        }
         .carousel-container {
             position: relative;
             width: 100%;
-            background: #fff;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 20px 30px rgba(0,0,0,0.2);
-            margin-bottom: 50px;
+            background: #000;
         }
         .carousel-slide {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
-        .carousel-slide .slide-item {
+        .slide-item {
             min-width: 100%;
-            transition: all 0.3s;
         }
-        .carousel-slide img {
+        .slide-item img {
             width: 100%;
-            height: 380px;
+            height: 420px;
             object-fit: cover;
             display: block;
-            background: #f0f0f0;
-        }
-        /* 图片占位美化 */
-        .img-placeholder {
-            width: 100%;
-            height: 380px;
-            background: linear-gradient(145deg, #e0e0e0, #c0c0c0);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #2c3e66;
-            text-shadow: 1px 1px 0 white;
-            background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.2) 0px, rgba(255,255,255,0.2) 2px, transparent 2px, transparent 8px);
-        }
-        .img-placeholder i {
-            font-size: 80px;
-            margin-bottom: 15px;
-            opacity: 0.7;
+            background: #e9ecef;
         }
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.55);
             color: white;
             border: none;
-            font-size: 28px;
-            padding: 8px 16px;
-            cursor: pointer;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 15;
             transition: 0.2s;
-            z-index: 10;
+            backdrop-filter: blur(4px);
         }
         .carousel-btn:hover {
-            background: rgba(0,0,0,0.8);
+            background: #e63946;
         }
-        .prev {
-            left: 15px;
-        }
-        .next {
-            right: 15px;
-        }
+        .prev { left: 20px; }
+        .next { right: 20px; }
         .dots {
-            text-align: center;
-            padding: 12px 0;
             position: absolute;
-            bottom: 10px;
+            bottom: 18px;
             width: 100%;
-            z-index: 10;
+            text-align: center;
+            z-index: 15;
         }
         .dot {
             display: inline-block;
             width: 12px;
             height: 12px;
-            margin: 0 6px;
-            background: #ddd;
+            margin: 0 7px;
+            background: rgba(255,255,240,0.6);
             border-radius: 50%;
             cursor: pointer;
             transition: 0.2s;
         }
         .dot.active {
-            background: #e63946;
-            transform: scale(1.2);
+            background: #ffc857;
+            transform: scale(1.25);
         }
 
-        /* 产品分类网格 */
-        .section-title {
-            font-size: 2rem;
-            font-weight: 800;
-            margin: 40px 0 25px 0;
-            padding-left: 15px;
-            border-left: 8px solid #ffd966;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        /* 分类标题 */
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 45px 0 25px 0;
+            border-bottom: 3px solid #ffcd7e;
+            padding-bottom: 12px;
         }
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+        .section-header span {
+            color: #fff3cf;
+            font-weight: 500;
+        }
+
+        /* 产品网格 */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 32px;
+            margin-bottom: 45px;
         }
         .product-card {
-            background: rgba(255, 255, 255, 0.96);
-            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 32px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            transition: transform 0.25s ease, box-shadow 0.3s;
-            backdrop-filter: blur(2px);
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
         }
         .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 25px 40px rgba(0,0,0,0.25);
+            transform: translateY(-8px);
+            box-shadow: 0 28px 38px rgba(0, 0, 0, 0.25);
         }
-        .card-img-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            padding: 20px 20px 12px;
-            background: #faf9f8;
-            border-bottom: 1px solid #eee;
-        }
-        .card-img-gallery .gallery-img {
-            flex: 1 1 80px;
-            background: #e9ecef;
-            border-radius: 18px;
-            text-align: center;
-            padding: 12px 0;
-            font-weight: bold;
-            color: #2c3e66;
-            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05);
-            transition: 0.1s;
+        .card-img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            background: #f4f2ee;
         }
         .card-content {
-            padding: 18px 22px 22px;
+            padding: 20px 22px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
-        .card-content h3 {
+        .card-title {
             font-size: 1.8rem;
             font-weight: 800;
-            color: #b13b2d;
-            margin-bottom: 12px;
+            color: #b73b2c;
+            margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             flex-wrap: wrap;
         }
-        .price-range {
+        .price-tag {
             font-size: 1.2rem;
-            background: #f0f0e0;
-            padding: 5px 12px;
-            border-radius: 40px;
-            color: #1e5631;
+            background: #ffeed9;
+            padding: 4px 14px;
+            border-radius: 60px;
+            color: #bb2e1e;
             font-weight: 700;
         }
-        .description {
-            margin: 15px 0;
-            color: #2d2f36;
-            line-height: 1.5;
-            font-size: 0.95rem;
-        }
-        .feature-list {
+        .feature-list-sm {
+            margin: 15px 0 20px;
             padding-left: 20px;
-            margin: 12px 0;
             list-style: none;
         }
-        .feature-list li {
+        .feature-list-sm li {
             margin-bottom: 8px;
+            font-size: 0.9rem;
             position: relative;
             padding-left: 22px;
+            color: #2c3e4e;
         }
-        .feature-list li:before {
+        .feature-list-sm li:before {
             content: "✓";
-            color: #2a7f2a;
+            color: #2c7a2d;
             font-weight: bold;
             position: absolute;
             left: 0;
-        }
-        .edit-btn {
-            background: #2c3e66;
-            color: white;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            margin-top: 10px;
-            font-size: 0.85rem;
-            width: fit-content;
-        }
-        .edit-btn:hover {
-            background: #e63946;
-            transform: scale(0.97);
-        }
-        /* 补充优化区域说明 */
-        .extra-tip {
-            background: rgba(0,0,0,0.3);
-            border-radius: 50px;
-            padding: 10px 25px;
-            text-align: center;
-            color: white;
-            margin-top: 30px;
-            font-weight: 500;
-        }
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            color: rgba(255,255,240,0.9);
-            font-size: 0.85rem;
-        }
-        /* 模态框 */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-        .modal-content {
-            background: white;
-            max-width: 550px;
-            width: 90%;
-            border-radius: 40px;
-            padding: 28px;
-            box-shadow: 0 30px 40px rgba(0,0,0,0.3);
-        }
-        .modal-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-        .modal-content input, .modal-content textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 12px 0;
-            border-radius: 28px;
-            border: 1px solid #ccc;
             font-size: 1rem;
         }
-        .modal-content textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-        .modal-buttons {
-            display: flex;
-            justify-content: flex-end;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .modal-buttons button {
-            padding: 8px 24px;
+        .inquiry-btn {
+            background: #f0b429;
+            color: #2d2f36;
+            padding: 8px 20px;
             border-radius: 40px;
+            font-weight: 600;
             border: none;
             cursor: pointer;
-            font-weight: bold;
+            transition: 0.2s;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
         }
-        .save-btn {
-            background: #2e7d32;
+        .inquiry-btn:hover {
+            background: #dd9d1a;
+        }
+
+        /* 优势区域 */
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 28px;
+            margin: 40px 0 50px;
+        }
+        .advantage-card {
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(8px);
+            padding: 28px 20px;
+            border-radius: 38px;
+            text-align: center;
             color: white;
+            transition: 0.2s;
+            border: 1px solid rgba(255,215,130,0.5);
         }
-        .cancel-btn {
-            background: #aaa;
+        .advantage-card i {
+            font-size: 3rem;
+            color: #ffcd7e;
+            margin-bottom: 16px;
         }
-        @media (max-width: 750px) {
-            .hero-title h1 { font-size: 1.8rem; }
-            .products-grid { grid-template-columns: 1fr; }
-            .card-img-gallery .gallery-img { flex: 1 1 60px; }
+        .advantage-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
         }
-        button {
-            cursor: pointer;
+
+        /* 底部联系栏 */
+        .contact-footer {
+            background: linear-gradient(110deg, #0a2f44, #1f4e3c);
+            border-radius: 48px;
+            padding: 35px 25px;
+            margin-top: 45px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.3);
         }
+        .contact-footer h3 {
+            font-size: 1.9rem;
+            margin-bottom: 12px;
+        }
+        .wx-qrcode {
+            width: 150px;
+            height: 150px;
+            margin: 18px auto;
+            display: block;
+            border-radius: 24px;
+            border: 3px solid #ffcf4a;
+            object-fit: cover;
+            background: white;
+        }
+        .hotline {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 780px) {
+            .main-container { padding: 15px; }
+            .hero-section h1 { font-size: 1.8rem; }
+            .slide-item img { height: 260px; }
+            .section-header h2 { font-size: 1.6rem; }
+        }
+        button { cursor: pointer; }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<div class="main-wrapper">
-    <div class="hero-title">
+<div class="main-container">
+    <div class="hero-section">
         <h1>🏪 便利店一站式全套厂家货源</h1>
-        <p>源头直供 · 开店无忧 · 在线实时编辑配置</p>
+        <p>源头直供 · 整店输出 · 终身售后</p>
+        <div class="hero-badge"><i class="fas fa-truck-fast"></i> 全国配送 · 免费设计布局</div>
     </div>
 
-    <!-- 置顶滑动轮播 图1-4 -->
-    <div class="carousel-container">
-        <div class="carousel-slide" id="carouselSlide">
-            <div class="slide-item"><div class="img-placeholder"><i class="fas fa-store"></i><span>图1 · 整店输出方案</span></div></div>
-            <div class="slide-item"><div class="img-placeholder"><i class="fas fa-cash-register"></i><span>图2 · 智能收银系统</span></div></div>
-            <div class="slide-item"><div class="img-placeholder"><i class="fas fa-shelves"></i><span>图3 · 精品货架实景</span></div></div>
-            <div class="slide-item"><div class="img-placeholder"><i class="fas fa-ice-cream"></i><span>图4 · 冷链设备展示</span></div></div>
+    <!-- 轮播区 -->
+    <div class="carousel-wrapper">
+        <div class="carousel-container">
+            <div class="carousel-slide" id="carouselSlide"></div>
+            <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            <div class="dots" id="dotsContainer"></div>
         </div>
-        <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-        <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
-        <div class="dots" id="dotsContainer"></div>
     </div>
 
-    <!-- 产品分类动态渲染区 -->
-    <div class="section-title"><i class="fas fa-tags"></i> 核心设备分类 · 厂家直供</div>
-    <div class="products-grid" id="productsGrid"></div>
-
-    <!-- 补充优化：其他推荐设备（在线编辑同样支持）-->
-    <div class="section-title"><i class="fas fa-plus-circle"></i> 精选增值设备 · 开店必备</div>
-    <div class="products-grid" id="extraGrid"></div>
-    <div class="extra-tip">
-        ⚡ 点击每个卡片下方「编辑」按钮，可修改产品名称、价格范围、详细介绍（支持html/文本），所有修改自动保存到浏览器，永久有效！
+    <!-- 产品分类标题 -->
+    <div class="section-header">
+        <h2><i class="fas fa-cubes"></i> 全系设备 · 厂家直供</h2>
+        <span>真实图片展示 | 一键询价</span>
     </div>
-    <footer>
-        © 便利店一站式采购平台 | 源头厂家直供 | 终身售后无忧
-    </footer>
-</div>
+    <div id="productsGrid" class="products-grid"></div>
 
-<!-- 编辑模态框 -->
-<div id="editModal" class="modal">
-    <div class="modal-content">
-        <h3>✏️ 在线编辑商品信息</h3>
-        <label>商品名称</label>
-        <input type="text" id="editName" placeholder="名称">
-        <label>价格/区间 (例: 4999元 或 4000-8000元)</label>
-        <input type="text" id="editPrice" placeholder="价格">
-        <label>详细介绍 (支持HTML标签，如功能列表)</label>
-        <textarea id="editDesc" placeholder="可以填写功能介绍、规格等"></textarea>
-        <div class="modal-buttons">
-            <button class="cancel-btn" id="closeModalBtn">取消</button>
-            <button class="save-btn" id="saveEditBtn">保存更改</button>
+    <!-- 优势 -->
+    <div class="advantage-grid">
+        <div class="advantage-card">
+            <i class="fas fa-hand-holding-usd"></i>
+            <h4>厂家底价</h4>
+            <p>去中间商，直接让利30%以上，采购成本直降</p>
         </div>
+        <div class="advantage-card">
+            <i class="fas fa-boxes"></i>
+            <h4>一站式配齐</h4>
+            <p>收银+货架+冰柜+装修+软装，整店输出省心省力</p>
+        </div>
+        <div class="advantage-card">
+            <i class="fas fa-headset"></i>
+            <h4>终身服务</h4>
+            <p>收银系统终生免费升级，设备全国联保</p>
+        </div>
+        <div class="advantage-card">
+            <i class="fas fa-chart-line"></i>
+            <h4>运营支持</h4>
+            <p>对接美宜佳/天福供应链，进销存数字化管理</p>
+        </div>
+    </div>
+
+    <!-- 底部联系 -->
+    <div class="contact-footer">
+        <h3><i class="fas fa-phone-alt"></i> 立即咨询 获取报价清单</h3>
+        <p class="hotline">📞 15360189789 (微信同号)</p>
+        <p>专业顾问1对1 · 免费上门测量 · 提供全套方案</p>
+        <img class="wx-qrcode" src="https://cdn.phototourl.com/free/2026-03-31-203869b5-cbe5-4830-95b8-0bac1c008626.jpg" alt="微信二维码" onerror="this.src='https://placehold.co/150x150?text=加微信咨询'">
+        <p style="margin-top: 12px;">扫码添加好友，领取开店资料包</p>
     </div>
 </div>
 
 <script>
-    // ---------- 基础数据结构 ----------
-    // 主分类数据 (完全符合题目要求)
-    const mainProducts = [
+    // ---------- 产品数据 (图片可在此处替换) ----------
+    let productDatabase = [
         {
-            id: "pos1",
-            name: "收银系统",
-            price: "4999元 (含收银机)",
-            desc: `<ul class="feature-list">
-                        <li>✅ 收银简单（老人、小孩都可10秒上手）</li>
-                        <li>✅ 可直接对接美宜佳、天福等大型供应链系统，进销存数据可控可查。</li>
-                        <li>✅ 本系统为连锁终生系统，一次购买终身享用，无任何捆绑，全网独一。</li>
-                        <li>✅ 支持小票打印、商品价格标签打印（这个很实用）。</li>
-                        <li>✅ SKU庞大数据支持，全品类识别商品。</li>
-                    </ul>`,
-            images: ["图5 · 智能收银终端"]
+            id: "pos_sys",
+            name: "收银系统 (含收银机)",
+            price: "4999元 (含高端收银机)",
+            desc: `<ul class="feature-list-sm"><li>✅ 收银简单（老人、小孩都可10秒上手）</li><li>✅ 直接对接美宜佳、天福等大型供应链，进销存可控可查</li><li>✅ 连锁终生系统，一次购买终身享用，无捆绑</li><li>✅ 支持小票打印、商品价格标签打印（超实用）</li><li>✅ SKU庞大数据支持，全品类识别商品</li></ul>`,
+            img: "https://cdn.phototourl.com/free/2026-03-31-ab2b8e58-412e-4a94-8b7d-8e2149b42e62.jpg"
         },
         {
-            id: "shelf1",
-            name: "货架系列",
+            id: "shelf_std",
+            name: "便利店专用货架",
             price: "30-50平方 = 4000元 - 8000元",
-            desc: "优质钢木结构，自由组合，承重强。适配30~50㎡便利店，包含单面货架、双面货架、端架等，提升陈列档次。",
-            images: ["图6 · 重型单面货架", "图7 · 双面中岛架", "图8 · 转角架/特色架"]
+            desc: `<ul class="feature-list-sm"><li>▪ 加厚钢材，单层承重80kg，耐用不变形</li><li>▪ 多层调节设计，空间利用率提高40%</li><li>▪ 免费上门测量+布局设计，包安装</li><li>▪ 适用零食、饮料、日化全品类展示</li></ul>`,
+            img: "https://cdn.phototourl.com/free/2026-03-31-d584db0f-cba5-4589-87cf-2fb248c308a5.jpg"
         },
         {
-            id: "counter1",
-            name: "收银台 + 烟酒柜",
-            price: "2500元 - 12000元",
-            desc: "多功能一体化收银台+高档烟酒展示柜，多种材质可选（人造石/实木贴皮），提升店面形象，可根据面积定制尺寸。",
-            images: ["图9 · 现代收银台", "图10 · 嵌入式烟酒柜", "图11 · 高端背柜组合"]
+            id: "counter_tobacco",
+            name: "收银台 + 烟酒柜组合",
+            price: "2500元 - 12000元 (定制尺寸)",
+            desc: `<ul class="feature-list-sm"><li>✨ 高端实木/钢化玻璃材质，提升店铺档次</li><li>✨ 一体化设计，含抽屉、储物柜、烟架酒架</li><li>✨ 适配10-80㎡店铺，免费出图</li><li>✨ 增加陈列档次，促进烟酒消费</li></ul>`,
+            img: "https://cdn.phototourl.com/free/2026-03-31-c0f19b3c-ad63-4dda-b880-b50420901f1c.jpg"
         },
         {
-            id: "freezer1",
-            name: "冰柜/冷柜系列",
-            price: "4000元 - 13000元",
-            desc: "商用卧式冷柜/立式展示柜/风幕柜，高效节能，保鲜效果好，多种容积可选，适合便利店雪糕、饮料、鲜食存储。",
-            images: ["图120 · 双门饮料柜", "图121 · 岛柜冰柜", "图122 · 风幕展示柜"]
+            id: "freezer",
+            name: "商用冰柜/冷藏展示柜",
+            price: "4000元 - 13000元 (多容积可选)",
+            desc: `<ul class="feature-list-sm"><li>❄️ 品牌压缩机，静音节能，制冷效率高</li><li>❄️ 立式/卧式/风幕柜/双温可选</li><li>❄️ 适合饮料、雪糕、速冻、鲜食</li><li>❄️ 全国联保，售后极速响应</li></ul>`,
+            img: "https://cdn.phototourl.com/free/2026-03-31-c8a473c7-6760-4d8e-afab-9bafe5f304b9.jpg"
         },
         {
-            id: "decoration1",
-            name: "连锁装修",
+            id: "decoration",
+            name: "连锁品牌整店装修",
             price: "30-50平方 = 30000元 - 50000元",
-            desc: "一站式整店装修：门头设计、地板吊顶、水电布局、货架安装、软装搭配，快速打造标准化连锁形象。",
-            images: ["图140 · 门头效果", "图141 · 店内动线", "图142 · 灯光展示区"]
-        }
-    ];
-
-    // 补充优化设备 (额外添加, 也支持在线编辑)
-    const extraProducts = [
+            desc: `<ul class="feature-list-sm"><li>🎨 一站式全包：设计+施工+主材+软装</li><li>🎨 连锁级SI标准，门头/地面/灯光/招牌统一</li><li>🎨 15天高效完工，不影响开业计划</li><li>🎨 提供3D效果图，所见即所得</li></ul>`,
+            img: "https://cdn.phototourl.com/free/2026-03-31-74b36f78-f17c-4f33-bc6b-c463a93c8ad2.jpg"
+        },
         {
-            id: "cctv1",
-            name: "监控安防系统",
+            id: "cctv_extra",
+            name: "智能监控安防系统",
             price: "2000元 - 5800元",
-            desc: "高清夜视摄像头+智能录像机，手机远程查看，防盗防损，24小时守护店铺安全。",
-            images: ["图A · 高清摄像头", "图B · 智能NVR"]
+            desc: `<ul class="feature-list-sm"><li>📹 400万超清红外夜视，手机远程查看</li><li>📹 AI人形侦测，异常报警推送</li><li>📹 30天云存储+硬盘录像双备份</li><li>📹 防盗防损，开店安心</li></ul>`,
+            img: "https://cdn.phototourl.com/free/2026-03-31-817787c0-917b-48a6-a694-b726a47dcb12.png"
         },
         {
-            id: "heater1",
-            name: "加热设备/关东煮机",
+            id: "heater_snack",
+            name: "关东煮/热食设备",
             price: "1500元 - 4500元",
-            desc: "关东煮机、热狗肠机、蒸包柜，提升鲜食销售，操作简单，易清洗。",
-            images: ["图C · 关东煮机", "图D · 双控热狗机"]
-        },
-        {
-            id: "shelf2",
-            name: "便利店收银耗材",
-            price: "199元 - 1299元",
-            desc: "小票纸、标签纸、收银钱箱、扫码枪，全套耗材配件，一站式配齐。",
-            images: ["图E · 热敏纸", "图F · 扫码枪"]
+            desc: `<ul class="feature-list-sm"><li>🍢 关东煮机+热狗肠机+蒸包柜组合</li><li>🍢 食品级不锈钢，温控精准</li><li>🍢 提升鲜食毛利50%，吸引客流</li><li>🍢 易清洁设计，操作简单</li></ul>`,
+            img: "https://cdn.phototourl.com/free/2026-03-31-82c3e5fa-4b9f-4904-9ae4-a92519efe3a0.png"
         }
     ];
 
-    // 合并所有卡片数据用于统一管理 (存储 localStorage)
-    let allProductGroups = [
-        ...mainProducts.map(p => ({ ...p, category: "main" })),
-        ...extraProducts.map(p => ({ ...p, category: "extra" }))
+    // 轮播图数组 (图1-4) —— 在此替换您的图片链接
+    const carouselImages = [
+        "https://cdn.phototourl.com/free/2026-03-31-83401c57-9d16-48e6-9d39-e8ca9c4067bf.png",
+        "https://cdn.phototourl.com/free/2026-03-31-817787c0-917b-48a6-a694-b726a47dcb12.png",
+        "https://cdn.phototourl.com/free/2026-03-31-82c3e5fa-4b9f-4904-9ae4-a92519efe3a0.png",
+        "https://cdn.phototourl.com/free/2026-03-31-203869b5-cbe5-4830-95b8-0bac1c008626.jpg"
     ];
 
-    // 渲染函数: 根据数据重绘 productsGrid 和 extraGrid
-    function renderAll() {
-        // 筛选主分类 (main)
-        const mainItems = allProductGroups.filter(p => p.category === "main");
-        const extraItems = allProductGroups.filter(p => p.category === "extra");
+    // 渲染产品
+    function renderProducts() {
+        const grid = document.getElementById("productsGrid");
+        if (!grid) return;
+        grid.innerHTML = "";
+        productDatabase.forEach(prod => {
+            const card = document.createElement("div");
+            card.className = "product-card";
+            const imgSrc = prod.img || "https://placehold.co/600x400?text=设备实拍";
+            card.innerHTML = `
+                <img class="card-img" src="${imgSrc}" alt="${prod.name}" onerror="this.src='https://placehold.co/600x400?text=图片加载中'">
+                <div class="card-content">
+                    <div class="card-title">
+                        ${escapeHtml(prod.name)}
+                        <span class="price-tag">${escapeHtml(prod.price)}</span>
+                    </div>
+                    <div class="product-desc">${prod.desc || '<ul class="feature-list-sm"><li>点击编辑完善详细功能</li></ul>'}</div>
+                    <button class="inquiry-btn" data-name="${escapeHtml(prod.name)}"><i class="fas fa-comment-dots"></i> 立即询价</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
 
-        const mainContainer = document.getElementById("productsGrid");
-        const extraContainer = document.getElementById("extraGrid");
-        if (mainContainer) mainContainer.innerHTML = generateCardHTML(mainItems);
-        if (extraContainer) extraContainer.innerHTML = generateCardHTML(extraItems);
-
-        // 绑定所有编辑按钮事件
-        document.querySelectorAll(".edit-product-btn").forEach(btn => {
+        // 绑定询价按钮
+        document.querySelectorAll(".inquiry-btn").forEach(btn => {
             btn.addEventListener("click", (e) => {
-                const id = btn.getAttribute("data-id");
-                openEditModal(id);
+                const name = btn.getAttribute("data-name");
+                alert(`✨ 已为您记录需求，专业顾问将联系您！\n商品：${name}\n咨询热线：15360189789`);
             });
         });
     }
 
-    // 生成卡片HTML (完全满足图片展示)
-    function generateCardHTML(productsArray) {
-        if (!productsArray.length) return "<div style='background:white; border-radius:30px; padding:20px; text-align:center;'>暂无设备，可添加</div>";
-        return productsArray.map(product => {
-            // 处理图片列表展示
-            let imagesHtml = '';
-            if (product.images && product.images.length) {
-                imagesHtml = `<div class="card-img-gallery">${product.images.map(imgText => `<div class="gallery-img"><i class="fas fa-image"></i><br>${imgText}</div>`).join('')}</div>`;
-            } else {
-                imagesHtml = `<div class="card-img-gallery"><div class="gallery-img"><i class="fas fa-cube"></i><br>展示图</div></div>`;
-            }
-
-            // 描述区域（支持html字符串）
-            let descHtml = product.desc || "暂无详细介绍，点击编辑完善。";
-            return `
-                <div class="product-card" data-id="${product.id}">
-                    ${imagesHtml}
-                    <div class="card-content">
-                        <h3>${escapeHtml(product.name)} <span class="price-range">${escapeHtml(product.price)}</span></h3>
-                        <div class="description">${descHtml}</div>
-                        <button class="edit-btn edit-product-btn" data-id="${product.id}"><i class="fas fa-pen-alt"></i> 编辑此商品</button>
-                    </div>
-                </div>
-            `;
-        }).join('');
-    }
-
-    // 简单防XSS
     function escapeHtml(str) {
         if (!str) return '';
         return str.replace(/[&<>]/g, function(m) {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
+            if(m === '&') return '&amp;';
+            if(m === '<') return '&lt;';
+            if(m === '>') return '&gt;';
             return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
         });
     }
 
-    // 打开编辑模态框
-    let currentEditId = null;
-    function openEditModal(id) {
-        const product = allProductGroups.find(p => p.id === id);
-        if (!product) return;
-        currentEditId = id;
-        document.getElementById("editName").value = product.name || '';
-        document.getElementById("editPrice").value = product.price || '';
-        // 对于描述，如果是带标签的复杂html，最好提取纯文本显示? 为了编辑方便，展示原始html文本(不解析)
-        // 需要将desc转回可编辑文本（保留原始内容，避免丢失html标签）
-        let descRaw = product.desc || '';
-        // 如果是通过innerHtml生成的列表，我们保留原始字符串，方便编辑（不破坏原有结构）
-        document.getElementById("editDesc").value = descRaw;
-        document.getElementById("editModal").style.display = "flex";
-    }
-
-    // 保存编辑内容
-    function saveCurrentEdit() {
-        if (!currentEditId) return;
-        const newName = document.getElementById("editName").value.trim();
-        const newPrice = document.getElementById("editPrice").value.trim();
-        const newDesc = document.getElementById("editDesc").value; // 允许html结构
-        if (!newName) {
-            alert("商品名称不能为空");
-            return;
-        }
-        const index = allProductGroups.findIndex(p => p.id === currentEditId);
-        if (index !== -1) {
-            allProductGroups[index].name = newName;
-            allProductGroups[index].price = newPrice;
-            allProductGroups[index].desc = newDesc;
-            // 保存至localStorage
-            saveToLocalStorage();
-            renderAll();  // 重新渲染
-        }
-        closeModal();
-    }
-
-    function closeModal() {
-        document.getElementById("editModal").style.display = "none";
-        currentEditId = null;
-    }
-
-    // 本地存储保存所有产品数据
-    function saveToLocalStorage() {
-        localStorage.setItem("convenience_store_products", JSON.stringify(allProductGroups));
-    }
-
-    function loadFromLocalStorage() {
-        const stored = localStorage.getItem("convenience_store_products");
-        if (stored) {
-            try {
-                const parsed = JSON.parse(stored);
-                if (Array.isArray(parsed) && parsed.length) {
-                    // 确保新旧数据结构兼容: 保留原有的images字段
-                    allProductGroups = parsed;
-                    // 确保每个产品都有 images 和 category 补充（如果缺失用默认）
-                    allProductGroups.forEach(p => {
-                        if (!p.images) {
-                            if (p.id === "pos1") p.images = ["图5 · 智能收银终端"];
-                            else if (p.id === "shelf1") p.images = ["图6 · 重型单面货架", "图7 · 双面中岛架", "图8 · 转角架"];
-                            else if (p.id === "counter1") p.images = ["图9 · 现代收银台", "图10 · 嵌入式烟酒柜", "图11 · 高端背柜"];
-                            else if (p.id === "freezer1") p.images = ["图120 · 双门饮料柜", "图121 · 岛柜冰柜", "图122 · 风幕展示柜"];
-                            else if (p.id === "decoration1") p.images = ["图140 · 门头效果", "图141 · 店内动线", "图142 · 灯光展示区"];
-                            else if (p.id === "cctv1") p.images = ["图A · 高清摄像头", "图B · 智能NVR"];
-                            else if (p.id === "heater1") p.images = ["图C · 关东煮机", "图D · 双控热狗机"];
-                            else if (p.id === "shelf2") p.images = ["图E · 热敏纸", "图F · 扫码枪"];
-                            else p.images = ["展示图片"];
-                        }
-                        if (!p.category) p.category = (p.id === "pos1" || p.id === "shelf1" || p.id === "counter1" || p.id === "freezer1" || p.id === "decoration1") ? "main" : "extra";
-                    });
-                }
-            } catch(e) { console.warn(e); }
-        } else {
-            // 首次加载，确保数据结构完整，并存储初始化
-            saveToLocalStorage();
-        }
-    }
-
-    // ----- 轮播图逻辑 (图1-4) -----
+    // 轮播逻辑
     let currentIndex = 0;
-    const slides = document.querySelectorAll('.slide-item');
-    const slideContainer = document.getElementById('carouselSlide');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const dotsContainer = document.getElementById('dotsContainer');
-    let totalSlides = 4;
-    let autoInterval;
+    let slideContainer, dotsContainer, autoInterval;
+    let totalSlides = carouselImages.length;
 
-    function updateCarousel() {
-        if (slideContainer) {
-            slideContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-            // 更新dots样式
-            const dots = document.querySelectorAll('.dot');
-            dots.forEach((dot, idx) => {
-                if (idx === currentIndex) dot.classList.add('active');
-                else dot.classList.remove('active');
-            });
-        }
-    }
-
-    function createDots() {
-        if (!dotsContainer) return;
-        dotsContainer.innerHTML = '';
+    function buildCarousel() {
+        const slideWrap = document.getElementById("carouselSlide");
+        if (!slideWrap) return;
+        slideWrap.innerHTML = "";
+        carouselImages.forEach((src, idx) => {
+            const slideDiv = document.createElement("div");
+            slideDiv.className = "slide-item";
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = `便利店场景图${idx+1}`;
+            img.onerror = function() { this.src = "https://placehold.co/1200x420?text=场景示意"; };
+            slideDiv.appendChild(img);
+            slideWrap.appendChild(slideDiv);
+        });
+        const dotsDiv = document.getElementById("dotsContainer");
+        dotsDiv.innerHTML = "";
         for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            if (i === currentIndex) dot.classList.add('active');
-            dot.addEventListener('click', () => {
+            const dot = document.createElement("span");
+            dot.classList.add("dot");
+            if (i === currentIndex) dot.classList.add("active");
+            dot.addEventListener("click", () => {
                 currentIndex = i;
                 updateCarousel();
                 resetAutoPlay();
             });
-            dotsContainer.appendChild(dot);
+            dotsDiv.appendChild(dot);
+        }
+        updateCarousel();
+    }
+
+    function updateCarousel() {
+        const slideWrap = document.getElementById("carouselSlide");
+        if (slideWrap) {
+            slideWrap.style.transform = `translateX(-${currentIndex * 100}%)`;
+            const dots = document.querySelectorAll(".dot");
+            dots.forEach((dot, idx) => {
+                if (idx === currentIndex) dot.classList.add("active");
+                else dot.classList.remove("active");
+            });
         }
     }
 
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateCarousel();
-        resetAutoPlay();
-    }
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateCarousel();
-        resetAutoPlay();
-    }
+    function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; updateCarousel(); resetAutoPlay(); }
+    function prevSlide() { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateCarousel(); resetAutoPlay(); }
     function resetAutoPlay() {
         if (autoInterval) clearInterval(autoInterval);
-        autoInterval = setInterval(() => {
-            nextSlide();
-        }, 4000);
-    }
-    if (prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', prevSlide);
-        nextBtn.addEventListener('click', nextSlide);
+        autoInterval = setInterval(() => { nextSlide(); }, 4500);
     }
 
-    // 初始化: 加载存储 + 渲染 + 轮播
+    function bindCarouselEvents() {
+        const prev = document.getElementById("prevBtn");
+        const next = document.getElementById("nextBtn");
+        if (prev) prev.addEventListener("click", prevSlide);
+        if (next) next.addEventListener("click", nextSlide);
+    }
+
     function init() {
-        loadFromLocalStorage();
-        renderAll();
-        // 确保轮播dom存在
-        createDots();
-        updateCarousel();
+        renderProducts();
+        buildCarousel();
+        bindCarouselEvents();
         resetAutoPlay();
-
-        // 模态框事件绑定
-        const modal = document.getElementById('editModal');
-        const closeBtn = document.getElementById('closeModalBtn');
-        const saveBtn = document.getElementById('saveEditBtn');
-        if (closeBtn) closeBtn.addEventListener('click', closeModal);
-        if (saveBtn) saveBtn.addEventListener('click', saveCurrentEdit);
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
     }
     init();
 </script>
