@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>便利店一站式全套厂家货源 | 设备采购平台</title>
+    <title>便利店一站式全套厂家货源 | 专业设备采购</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -26,6 +26,7 @@
             padding: 20px 24px 50px;
         }
 
+        /* 头部区域 */
         .hero-section {
             text-align: center;
             margin-bottom: 35px;
@@ -34,6 +35,7 @@
             border-radius: 70px;
             box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(4px);
+            position: relative;
         }
         .hero-section h1 {
             font-size: 2.8rem;
@@ -105,9 +107,7 @@
             transition: 0.2s;
             backdrop-filter: blur(4px);
         }
-        .carousel-btn:hover {
-            background: #e63946;
-        }
+        .carousel-btn:hover { background: #e63946; }
         .prev { left: 20px; }
         .next { right: 20px; }
         .dots {
@@ -125,20 +125,18 @@
             background: rgba(255,255,240,0.6);
             border-radius: 50%;
             cursor: pointer;
-            transition: 0.2s;
         }
         .dot.active {
             background: #ffc857;
             transform: scale(1.25);
         }
 
-        /* 分类标题 */
         .section-header {
             display: flex;
             align-items: baseline;
             justify-content: space-between;
             flex-wrap: wrap;
-            margin: 45px 0 25px 0;
+            margin: 45px 0 25px;
             border-bottom: 3px solid #ffcd7e;
             padding-bottom: 12px;
         }
@@ -156,7 +154,7 @@
         /* 产品网格 */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
             gap: 32px;
             margin-bottom: 45px;
         }
@@ -173,20 +171,36 @@
             transform: translateY(-8px);
             box-shadow: 0 28px 38px rgba(0, 0, 0, 0.25);
         }
-        .card-img {
-            width: 100%;
-            height: 210px;
+        /* 多图网格区域 */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 8px;
+            padding: 16px 16px 8px;
+            background: #f8f6f2;
+            border-bottom: 1px solid #eee;
+        }
+        .gallery-thumb {
+            aspect-ratio: 1 / 1;
             object-fit: cover;
-            background: #f4f2ee;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+            background: #e0e0e0;
+        }
+        .gallery-thumb:hover {
+            transform: scale(0.98);
+            opacity: 0.85;
         }
         .card-content {
-            padding: 20px 22px 24px;
+            padding: 18px 22px 24px;
             flex: 1;
             display: flex;
             flex-direction: column;
         }
         .card-title {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: 800;
             color: #b73b2c;
             margin-bottom: 8px;
@@ -194,17 +208,27 @@
             justify-content: space-between;
             align-items: baseline;
             flex-wrap: wrap;
+            gap: 8px;
         }
         .price-tag {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             background: #ffeed9;
             padding: 4px 14px;
             border-radius: 60px;
             color: #bb2e1e;
             font-weight: 700;
+            white-space: nowrap;
+        }
+        .spec-select {
+            margin: 12px 0;
+            padding: 8px 12px;
+            border-radius: 40px;
+            border: 1px solid #ddd;
+            background: white;
+            font-size: 0.9rem;
         }
         .feature-list-sm {
-            margin: 15px 0 20px;
+            margin: 12px 0 16px;
             padding-left: 20px;
             list-style: none;
         }
@@ -221,28 +245,30 @@
             font-weight: bold;
             position: absolute;
             left: 0;
-            font-size: 1rem;
         }
         .inquiry-btn {
             background: #f0b429;
             color: #2d2f36;
-            padding: 8px 20px;
+            padding: 10px 20px;
             border-radius: 40px;
             font-weight: 600;
             border: none;
             cursor: pointer;
             transition: 0.2s;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            width: fit-content;
+            width: 100%;
+            margin-top: 8px;
         }
         .inquiry-btn:hover {
             background: #dd9d1a;
+            transform: scale(0.98);
         }
 
-        /* 优势区域 */
+        /* 优势网格 */
         .advantage-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -256,7 +282,6 @@
             border-radius: 38px;
             text-align: center;
             color: white;
-            transition: 0.2s;
             border: 1px solid rgba(255,215,130,0.5);
         }
         .advantage-card i {
@@ -279,10 +304,6 @@
             color: white;
             box-shadow: 0 12px 28px rgba(0,0,0,0.3);
         }
-        .contact-footer h3 {
-            font-size: 1.9rem;
-            margin-bottom: 12px;
-        }
         .wx-qrcode {
             width: 150px;
             height: 150px;
@@ -299,13 +320,92 @@
             letter-spacing: 2px;
         }
 
+        /* 模态框（询价表单 + 图片放大） */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            max-width: 500px;
+            width: 90%;
+            border-radius: 48px;
+            padding: 28px;
+            position: relative;
+        }
+        .image-modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            background: transparent;
+        }
+        .image-modal-content img {
+            width: auto;
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .modal-content input, .modal-content textarea {
+            width: 100%;
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 60px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        .modal-content textarea {
+            border-radius: 24px;
+            resize: vertical;
+        }
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .submit-btn {
+            background: #2a7f2a;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 40px;
+            border: none;
+        }
+        .close-modal {
+            background: #aaa;
+            padding: 10px 24px;
+            border-radius: 40px;
+            border: none;
+        }
+        .float-quote {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #f0b429;
+            color: #2d2f36;
+            border-radius: 60px;
+            padding: 14px 24px;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            z-index: 99;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
         @media (max-width: 780px) {
             .main-container { padding: 15px; }
             .hero-section h1 { font-size: 1.8rem; }
             .slide-item img { height: 260px; }
-            .section-header h2 { font-size: 1.6rem; }
+            .image-gallery { grid-template-columns: repeat(3, 1fr); }
         }
-        button { cursor: pointer; }
     </style>
 </head>
 <body>
@@ -326,102 +426,143 @@
         </div>
     </div>
 
-    <!-- 产品分类标题 -->
     <div class="section-header">
         <h2><i class="fas fa-cubes"></i> 全系设备 · 厂家直供</h2>
-        <span>真实图片展示 | 一键询价</span>
+        <span>多图展示 | 选配规格 | 一键询价</span>
     </div>
     <div id="productsGrid" class="products-grid"></div>
 
     <!-- 优势 -->
     <div class="advantage-grid">
-        <div class="advantage-card">
-            <i class="fas fa-hand-holding-usd"></i>
-            <h4>厂家底价</h4>
-            <p>去中间商，直接让利30%以上，采购成本直降</p>
-        </div>
-        <div class="advantage-card">
-            <i class="fas fa-boxes"></i>
-            <h4>一站式配齐</h4>
-            <p>收银+货架+冰柜+装修+软装，整店输出省心省力</p>
-        </div>
-        <div class="advantage-card">
-            <i class="fas fa-headset"></i>
-            <h4>终身服务</h4>
-            <p>收银系统终生免费升级，设备全国联保</p>
-        </div>
-        <div class="advantage-card">
-            <i class="fas fa-chart-line"></i>
-            <h4>运营支持</h4>
-            <p>对接美宜佳/天福供应链，进销存数字化管理</p>
-        </div>
+        <div class="advantage-card"><i class="fas fa-hand-holding-usd"></i><h4>厂家底价</h4><p>去中间商，采购成本直降30%</p></div>
+        <div class="advantage-card"><i class="fas fa-boxes"></i><h4>一站式配齐</h4><p>收银+货架+冰柜+装修+软装</p></div>
+        <div class="advantage-card"><i class="fas fa-headset"></i><h4>终身服务</h4><p>收银系统终生免费升级，设备联保</p></div>
+        <div class="advantage-card"><i class="fas fa-chart-line"></i><h4>运营支持</h4><p>对接美宜佳/天福供应链，进销存管理</p></div>
     </div>
 
-    <!-- 底部联系 -->
     <div class="contact-footer">
         <h3><i class="fas fa-phone-alt"></i> 立即咨询 获取报价清单</h3>
         <p class="hotline">📞 15360189789 (微信同号)</p>
         <p>专业顾问1对1 · 免费上门测量 · 提供全套方案</p>
         <img class="wx-qrcode" src="https://cdn.phototourl.com/free/2026-03-31-203869b5-cbe5-4830-95b8-0bac1c008626.jpg" alt="微信二维码" onerror="this.src='https://placehold.co/150x150?text=加微信咨询'">
-        <p style="margin-top: 12px;">扫码添加好友，领取开店资料包</p>
+        <p>扫码添加好友，领取开店资料包</p>
+    </div>
+</div>
+
+<!-- 浮动按钮 -->
+<button class="float-quote" id="floatQuoteBtn"><i class="fas fa-file-invoice-dollar"></i> 获取报价方案</button>
+
+<!-- 通用模态框（询价表单） -->
+<div id="inquiryModal" class="modal">
+    <div class="modal-content">
+        <h3><i class="fas fa-envelope"></i> 快速询价</h3>
+        <input type="text" id="inqName" placeholder="您的姓名" value="">
+        <input type="tel" id="inqPhone" placeholder="联系电话">
+        <input type="text" id="inqProduct" placeholder="感兴趣的产品（可选）">
+        <textarea id="inqMsg" rows="3" placeholder="备注需求，如店铺面积、设备清单..."></textarea>
+        <div class="modal-buttons">
+            <button class="close-modal" id="closeInquiryBtn">取消</button>
+            <button class="submit-btn" id="submitInquiryBtn">提交询价</button>
+        </div>
+    </div>
+</div>
+
+<!-- 图片放大模态框 -->
+<div id="imageModal" class="modal" style="background: rgba(0,0,0,0.9);">
+    <div class="image-modal-content" style="text-align:center; position:relative;">
+        <img id="enlargedImage" src="" alt="放大图片" style="max-width:90vw; max-height:85vh; border-radius:20px;">
+        <button class="close-modal" id="closeImageBtn" style="position:absolute; top:-40px; right:0; background:#fff; color:#000; border:none; border-radius:40px; padding:6px 20px;">关闭</button>
     </div>
 </div>
 
 <script>
-    // ---------- 产品数据 (图片可在此处替换) ----------
-    let productDatabase = [
+    // ======================= 产品数据（含您提供的多图） =======================
+    const productDatabase = [
         {
             id: "pos_sys",
             name: "收银系统 (含收银机)",
             price: "4999元 (含高端收银机)",
+            images: [
+                "https://gd-hbimg.huaban.com/276596adca1a6a73adea0261ce65e42a713972ed18f37c-KTqQz1_fw658",
+                "https://img.alicdn.com/i2/2938772068/O1CN01k97bvT1R9ByWBXJMr_!!2938772068.jpg",
+                "https://gd-hbimg.huaban.com/900c4850811de36751e31cdeef52a62bdf2231f6297eb-TjsEJP_fw658"
+            ],
             desc: `<ul class="feature-list-sm"><li>✅ 收银简单（老人、小孩都可10秒上手）</li><li>✅ 直接对接美宜佳、天福等大型供应链，进销存可控可查</li><li>✅ 连锁终生系统，一次购买终身享用，无捆绑</li><li>✅ 支持小票打印、商品价格标签打印（超实用）</li><li>✅ SKU庞大数据支持，全品类识别商品</li></ul>`,
-            img: "https://cdn.phototourl.com/free/2026-03-31-ab2b8e58-412e-4a94-8b7d-8e2149b42e62.jpg"
+            specs: ["标准版 (含1台收银机)", "双屏旗舰版"]
         },
         {
             id: "shelf_std",
             name: "便利店专用货架",
             price: "30-50平方 = 4000元 - 8000元",
+            images: [
+                "https://cdn.phototourl.com/free/2026-04-01-30b34d84-2552-489f-b911-6c97b7401e3f.jpg",
+                "https://cdn.phototourl.com/free/2026-04-01-06b55765-f7a5-4a35-87d0-274167c922be.jpg",
+                "https://cbu01.alicdn.com/img/ibank/O1CN01rg3ODA1Bs2mGdLBf4_!!0-0-cib.jpg"
+            ],
             desc: `<ul class="feature-list-sm"><li>▪ 加厚钢材，单层承重80kg，耐用不变形</li><li>▪ 多层调节设计，空间利用率提高40%</li><li>▪ 免费上门测量+布局设计，包安装</li><li>▪ 适用零食、饮料、日化全品类展示</li></ul>`,
-            img: "https://cdn.phototourl.com/free/2026-03-31-d584db0f-cba5-4589-87cf-2fb248c308a5.jpg"
+            specs: ["30平方标准套装", "50平方豪华套装"]
         },
         {
             id: "counter_tobacco",
             name: "收银台 + 烟酒柜组合",
-            price: "2500元 - 12000元 (定制尺寸)",
+            price: "2500元 - 12000元 (定制)",
+            images: [
+                "https://cbu01.alicdn.com/img/ibank/2020/702/032/14313230207_1228728860.jpg",
+                "https://cbu01.alicdn.com/img/ibank/2019/010/606/12479606010_1228728860.jpg",
+                "https://img05.jdzj.com/oledit/UploadFile/news2017z/image/20171017/20171017143945124512924070.jpg"
+            ],
             desc: `<ul class="feature-list-sm"><li>✨ 高端实木/钢化玻璃材质，提升店铺档次</li><li>✨ 一体化设计，含抽屉、储物柜、烟架酒架</li><li>✨ 适配10-80㎡店铺，免费出图</li><li>✨ 增加陈列档次，促进烟酒消费</li></ul>`,
-            img: "https://cdn.phototourl.com/free/2026-03-31-c0f19b3c-ad63-4dda-b880-b50420901f1c.jpg"
+            specs: ["经济实用型", "高端旗舰型"]
         },
         {
             id: "freezer",
             name: "商用冰柜/冷藏展示柜",
-            price: "4000元 - 13000元 (多容积可选)",
+            price: "4000元 - 13000元",
+            images: [
+                "https://img.alicdn.com/i2/2225359793/O1CN01MeZ8SF2MDFQP4MZ71_!!2225359793.jpg",
+                "https://ts3.tc.mm.bing.net/th/id/OIP-C.uaMr5vCr-7z7y4UzBdEV6QAAAA?w=300&h=300",
+                "https://img.36krcdn.com/hsossms/20230327/v2_826c78b6aecf408fb90e325576cc3047_oswg1733330oswg1080oswg802_img_000"
+            ],
             desc: `<ul class="feature-list-sm"><li>❄️ 品牌压缩机，静音节能，制冷效率高</li><li>❄️ 立式/卧式/风幕柜/双温可选</li><li>❄️ 适合饮料、雪糕、速冻、鲜食</li><li>❄️ 全国联保，售后极速响应</li></ul>`,
-            img: "https://cdn.phototourl.com/free/2026-03-31-c8a473c7-6760-4d8e-afab-9bafe5f304b9.jpg"
+            specs: ["单门展示柜", "双门风幕柜", "大型岛柜"]
         },
         {
             id: "decoration",
             name: "连锁品牌整店装修",
             price: "30-50平方 = 30000元 - 50000元",
+            images: [
+                "https://pic1.shejiben.com/case/2019/05/20/20190520100453-a5096e07-2s.jpeg",
+                "https://ts2.tc.mm.bing.net/th/id/OIP-C.tohSleGyhXPu5k4iwNLyjgHaFj?rs=1&pid=ImgDetMain",
+                "https://www.mingkaicheng.com/uploads/allimg/220311/1-220311140201.jpg"
+            ],
             desc: `<ul class="feature-list-sm"><li>🎨 一站式全包：设计+施工+主材+软装</li><li>🎨 连锁级SI标准，门头/地面/灯光/招牌统一</li><li>🎨 15天高效完工，不影响开业计划</li><li>🎨 提供3D效果图，所见即所得</li></ul>`,
-            img: "https://cdn.phototourl.com/free/2026-03-31-74b36f78-f17c-4f33-bc6b-c463a93c8ad2.jpg"
+            specs: ["基础简装", "品牌精装"]
         },
         {
             id: "cctv_extra",
             name: "智能监控安防系统",
             price: "2000元 - 5800元",
+            images: [
+                "https://cdn.phototourl.com/free/2026-03-31-817787c0-917b-48a6-a694-b726a47dcb12.png",
+                "https://placehold.co/600x400?text=监控系统图2"
+            ],
             desc: `<ul class="feature-list-sm"><li>📹 400万超清红外夜视，手机远程查看</li><li>📹 AI人形侦测，异常报警推送</li><li>📹 30天云存储+硬盘录像双备份</li><li>📹 防盗防损，开店安心</li></ul>`,
-            img: "https://cdn.phototourl.com/free/2026-03-31-817787c0-917b-48a6-a694-b726a47dcb12.png"
+            specs: ["4路套装", "8路高清套装"]
         },
         {
             id: "heater_snack",
             name: "关东煮/热食设备",
             price: "1500元 - 4500元",
+            images: [
+                "https://cdn.phototourl.com/free/2026-03-31-82c3e5fa-4b9f-4904-9ae4-a92519efe3a0.png",
+                "https://placehold.co/600x400?text=热食设备"
+            ],
             desc: `<ul class="feature-list-sm"><li>🍢 关东煮机+热狗肠机+蒸包柜组合</li><li>🍢 食品级不锈钢，温控精准</li><li>🍢 提升鲜食毛利50%，吸引客流</li><li>🍢 易清洁设计，操作简单</li></ul>`,
-            img: "https://cdn.phototourl.com/free/2026-03-31-82c3e5fa-4b9f-4904-9ae4-a92519efe3a0.png"
+            specs: ["标准三孔", "豪华五孔+蒸包"]
         }
     ];
 
-    // 轮播图数组 (图1-4) —— 在此替换您的图片链接
+    // 轮播图片（图1-4）
     const carouselImages = [
         "https://cdn.phototourl.com/free/2026-03-31-83401c57-9d16-48e6-9d39-e8ca9c4067bf.png",
         "https://cdn.phototourl.com/free/2026-03-31-817787c0-917b-48a6-a694-b726a47dcb12.png",
@@ -429,7 +570,7 @@
         "https://cdn.phototourl.com/free/2026-03-31-203869b5-cbe5-4830-95b8-0bac1c008626.jpg"
     ];
 
-    // 渲染产品
+    // 渲染产品网格（支持多图）
     function renderProducts() {
         const grid = document.getElementById("productsGrid");
         if (!grid) return;
@@ -437,106 +578,127 @@
         productDatabase.forEach(prod => {
             const card = document.createElement("div");
             card.className = "product-card";
-            const imgSrc = prod.img || "https://placehold.co/600x400?text=设备实拍";
+            // 多图网格
+            let galleryHtml = `<div class="image-gallery">`;
+            prod.images.forEach((imgUrl, idx) => {
+                galleryHtml += `<img class="gallery-thumb" src="${imgUrl}" alt="${prod.name}图${idx+1}" 
+                    onclick="openImageModal('${imgUrl}')" onerror="this.src='https://placehold.co/200x200?text=图'">`;
+            });
+            galleryHtml += `</div>`;
+
+            // 规格下拉
+            let specHtml = `<select class="spec-select">`;
+            if (prod.specs && prod.specs.length) {
+                prod.specs.forEach(spec => { specHtml += `<option value="${spec}">${spec}</option>`; });
+            } else {
+                specHtml += `<option>标准配置</option>`;
+            }
+            specHtml += `</select>`;
+
             card.innerHTML = `
-                <img class="card-img" src="${imgSrc}" alt="${prod.name}" onerror="this.src='https://placehold.co/600x400?text=图片加载中'">
+                ${galleryHtml}
                 <div class="card-content">
                     <div class="card-title">
                         ${escapeHtml(prod.name)}
                         <span class="price-tag">${escapeHtml(prod.price)}</span>
                     </div>
-                    <div class="product-desc">${prod.desc || '<ul class="feature-list-sm"><li>点击编辑完善详细功能</li></ul>'}</div>
+                    ${specHtml}
+                    <div class="product-desc">${prod.desc}</div>
                     <button class="inquiry-btn" data-name="${escapeHtml(prod.name)}"><i class="fas fa-comment-dots"></i> 立即询价</button>
                 </div>
             `;
             grid.appendChild(card);
         });
 
-        // 绑定询价按钮
         document.querySelectorAll(".inquiry-btn").forEach(btn => {
             btn.addEventListener("click", (e) => {
-                const name = btn.getAttribute("data-name");
-                alert(`✨ 已为您记录需求，专业顾问将联系您！\n商品：${name}\n咨询热线：15360189789`);
+                const productName = btn.getAttribute("data-name");
+                openInquiryForm(productName);
             });
         });
     }
 
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
-            if(m === '&') return '&amp;';
-            if(m === '<') return '&lt;';
-            if(m === '>') return '&gt;';
-            return m;
-        });
+    function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+
+    // 询价模态框
+    const inquiryModal = document.getElementById("inquiryModal");
+    function openInquiryForm(productName = "") {
+        document.getElementById("inqProduct").value = productName;
+        inquiryModal.style.display = "flex";
     }
+    function closeInquiryModal() { inquiryModal.style.display = "none"; }
+    document.getElementById("closeInquiryBtn").addEventListener("click", closeInquiryModal);
+    document.getElementById("submitInquiryBtn").addEventListener("click", () => {
+        const name = document.getElementById("inqName").value;
+        const phone = document.getElementById("inqPhone").value;
+        if (!name || !phone) { alert("请填写姓名和联系电话"); return; }
+        alert(`尊敬的 ${name}，您的询价已提交！顾问将在2小时内联系您 ${phone}，感谢信任。`);
+        closeInquiryModal();
+        document.getElementById("inqName").value = "";
+        document.getElementById("inqPhone").value = "";
+        document.getElementById("inqMsg").value = "";
+    });
 
-    // 轮播逻辑
+    // 图片放大
+    function openImageModal(imgSrc) {
+        const modal = document.getElementById("imageModal");
+        const enlarged = document.getElementById("enlargedImage");
+        enlarged.src = imgSrc;
+        modal.style.display = "flex";
+    }
+    document.getElementById("closeImageBtn").addEventListener("click", () => {
+        document.getElementById("imageModal").style.display = "none";
+    });
+
+    // 浮动按钮事件
+    document.getElementById("floatQuoteBtn").addEventListener("click", () => openInquiryForm("全店设备报价"));
+
+    // 轮播图逻辑
     let currentIndex = 0;
-    let slideContainer, dotsContainer, autoInterval;
-    let totalSlides = carouselImages.length;
-
+    let autoInterval;
     function buildCarousel() {
         const slideWrap = document.getElementById("carouselSlide");
         if (!slideWrap) return;
         slideWrap.innerHTML = "";
         carouselImages.forEach((src, idx) => {
-            const slideDiv = document.createElement("div");
-            slideDiv.className = "slide-item";
+            const div = document.createElement("div");
+            div.className = "slide-item";
             const img = document.createElement("img");
-            img.src = src;
-            img.alt = `便利店场景图${idx+1}`;
+            img.src = src; img.alt = `场景${idx+1}`;
             img.onerror = function() { this.src = "https://placehold.co/1200x420?text=场景示意"; };
-            slideDiv.appendChild(img);
-            slideWrap.appendChild(slideDiv);
+            div.appendChild(img);
+            slideWrap.appendChild(div);
         });
         const dotsDiv = document.getElementById("dotsContainer");
         dotsDiv.innerHTML = "";
-        for (let i = 0; i < totalSlides; i++) {
+        for (let i = 0; i < carouselImages.length; i++) {
             const dot = document.createElement("span");
             dot.classList.add("dot");
             if (i === currentIndex) dot.classList.add("active");
-            dot.addEventListener("click", () => {
-                currentIndex = i;
-                updateCarousel();
-                resetAutoPlay();
-            });
+            dot.addEventListener("click", () => { currentIndex = i; updateCarousel(); resetAutoPlay(); });
             dotsDiv.appendChild(dot);
         }
         updateCarousel();
     }
-
     function updateCarousel() {
         const slideWrap = document.getElementById("carouselSlide");
-        if (slideWrap) {
-            slideWrap.style.transform = `translateX(-${currentIndex * 100}%)`;
-            const dots = document.querySelectorAll(".dot");
-            dots.forEach((dot, idx) => {
-                if (idx === currentIndex) dot.classList.add("active");
-                else dot.classList.remove("active");
-            });
-        }
+        if (slideWrap) slideWrap.style.transform = `translateX(-${currentIndex * 100}%)`;
+        const dots = document.querySelectorAll(".dot");
+        dots.forEach((dot, idx) => { if (idx === currentIndex) dot.classList.add("active"); else dot.classList.remove("active"); });
     }
+    function nextSlide() { currentIndex = (currentIndex + 1) % carouselImages.length; updateCarousel(); resetAutoPlay(); }
+    function prevSlide() { currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length; updateCarousel(); resetAutoPlay(); }
+    function resetAutoPlay() { if (autoInterval) clearInterval(autoInterval); autoInterval = setInterval(() => nextSlide(), 4500); }
+    document.getElementById("prevBtn")?.addEventListener("click", prevSlide);
+    document.getElementById("nextBtn")?.addEventListener("click", nextSlide);
 
-    function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; updateCarousel(); resetAutoPlay(); }
-    function prevSlide() { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateCarousel(); resetAutoPlay(); }
-    function resetAutoPlay() {
-        if (autoInterval) clearInterval(autoInterval);
-        autoInterval = setInterval(() => { nextSlide(); }, 4500);
-    }
-
-    function bindCarouselEvents() {
-        const prev = document.getElementById("prevBtn");
-        const next = document.getElementById("nextBtn");
-        if (prev) prev.addEventListener("click", prevSlide);
-        if (next) next.addEventListener("click", nextSlide);
-    }
-
+    // 初始化
     function init() {
         renderProducts();
         buildCarousel();
-        bindCarouselEvents();
         resetAutoPlay();
+        // 点击模态框背景关闭
+        window.addEventListener("click", (e) => { if(e.target === inquiryModal) closeInquiryModal(); if(e.target === document.getElementById("imageModal")) document.getElementById("imageModal").style.display="none"; });
     }
     init();
 </script>
