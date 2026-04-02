@@ -26,7 +26,6 @@
             padding: 20px 24px 50px;
         }
 
-        /* 头部区域 */
         .hero-section {
             text-align: center;
             margin-bottom: 35px;
@@ -35,7 +34,6 @@
             border-radius: 70px;
             box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(4px);
-            position: relative;
         }
         .hero-section h1 {
             font-size: 2.8rem;
@@ -63,7 +61,6 @@
             color: #2d2f36;
         }
 
-        /* 轮播 */
         .carousel-wrapper {
             position: relative;
             width: 100%;
@@ -151,7 +148,6 @@
             font-weight: 500;
         }
 
-        /* 产品网格 */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
@@ -171,7 +167,6 @@
             transform: translateY(-8px);
             box-shadow: 0 28px 38px rgba(0, 0, 0, 0.25);
         }
-        /* 多图网格区域 */
         .image-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -268,7 +263,6 @@
             transform: scale(0.98);
         }
 
-        /* 优势网格 */
         .advantage-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -294,7 +288,6 @@
             margin-bottom: 12px;
         }
 
-        /* 底部联系栏 */
         .contact-footer {
             background: linear-gradient(110deg, #0a2f44, #1f4e3c);
             border-radius: 48px;
@@ -320,7 +313,6 @@
             letter-spacing: 2px;
         }
 
-        /* 模态框（询价表单 + 图片放大） */
         .modal {
             display: none;
             position: fixed;
@@ -416,7 +408,6 @@
         <div class="hero-badge"><i class="fas fa-truck-fast"></i> 全国配送 · 免费设计布局</div>
     </div>
 
-    <!-- 轮播区 -->
     <div class="carousel-wrapper">
         <div class="carousel-container">
             <div class="carousel-slide" id="carouselSlide"></div>
@@ -432,7 +423,6 @@
     </div>
     <div id="productsGrid" class="products-grid"></div>
 
-    <!-- 优势 -->
     <div class="advantage-grid">
         <div class="advantage-card"><i class="fas fa-hand-holding-usd"></i><h4>厂家底价</h4><p>去中间商，采购成本直降30%</p></div>
         <div class="advantage-card"><i class="fas fa-boxes"></i><h4>一站式配齐</h4><p>收银+货架+冰柜+装修+软装</p></div>
@@ -449,10 +439,8 @@
     </div>
 </div>
 
-<!-- 浮动按钮 -->
 <button class="float-quote" id="floatQuoteBtn"><i class="fas fa-file-invoice-dollar"></i> 获取报价方案</button>
 
-<!-- 通用模态框（询价表单） -->
 <div id="inquiryModal" class="modal">
     <div class="modal-content">
         <h3><i class="fas fa-envelope"></i> 快速询价</h3>
@@ -467,7 +455,6 @@
     </div>
 </div>
 
-<!-- 图片放大模态框 -->
 <div id="imageModal" class="modal" style="background: rgba(0,0,0,0.9);">
     <div class="image-modal-content" style="text-align:center; position:relative;">
         <img id="enlargedImage" src="" alt="放大图片" style="max-width:90vw; max-height:85vh; border-radius:20px;">
@@ -476,16 +463,16 @@
 </div>
 
 <script>
-    // ======================= 产品数据（含您提供的多图） =======================
+    // ======================= 产品数据（已按您提供的新链接全部更新） =======================
     const productDatabase = [
         {
             id: "pos_sys",
             name: "收银系统 (含收银机)",
             price: "4999元 (含高端收银机)",
             images: [
-                "https://gd-hbimg.huaban.com/276596adca1a6a73adea0261ce65e42a713972ed18f37c-KTqQz1_fw658",
                 "https://img.alicdn.com/i2/2938772068/O1CN01k97bvT1R9ByWBXJMr_!!2938772068.jpg",
-                "https://gd-hbimg.huaban.com/900c4850811de36751e31cdeef52a62bdf2231f6297eb-TjsEJP_fw658"
+                "https://cdn.phototourl.com/free/2026-04-02-3124be7b-fdcd-435d-b3f7-afd49fb8dabb.jpg",
+                "https://cdn.phototourl.com/free/2026-04-02-2b294de3-ee12-4a3a-a38c-fc48cbfd21da.jpg"
             ],
             desc: `<ul class="feature-list-sm"><li>✅ 收银简单（老人、小孩都可10秒上手）</li><li>✅ 直接对接美宜佳、天福等大型供应链，进销存可控可查</li><li>✅ 连锁终生系统，一次购买终身享用，无捆绑</li><li>✅ 支持小票打印、商品价格标签打印（超实用）</li><li>✅ SKU庞大数据支持，全品类识别商品</li></ul>`,
             specs: ["标准版 (含1台收银机)", "双屏旗舰版"]
@@ -497,7 +484,7 @@
             images: [
                 "https://cdn.phototourl.com/free/2026-04-01-30b34d84-2552-489f-b911-6c97b7401e3f.jpg",
                 "https://cdn.phototourl.com/free/2026-04-01-06b55765-f7a5-4a35-87d0-274167c922be.jpg",
-                "https://cbu01.alicdn.com/img/ibank/O1CN01rg3ODA1Bs2mGdLBf4_!!0-0-cib.jpg"
+                "https://cdn.phototourl.com/free/2026-04-02-6ada404e-1be4-4731-8920-5c8c6623d77f.jpg"
             ],
             desc: `<ul class="feature-list-sm"><li>▪ 加厚钢材，单层承重80kg，耐用不变形</li><li>▪ 多层调节设计，空间利用率提高40%</li><li>▪ 免费上门测量+布局设计，包安装</li><li>▪ 适用零食、饮料、日化全品类展示</li></ul>`,
             specs: ["30平方标准套装", "50平方豪华套装"]
@@ -507,9 +494,9 @@
             name: "收银台 + 烟酒柜组合",
             price: "2500元 - 12000元 (定制)",
             images: [
-                "https://cbu01.alicdn.com/img/ibank/2020/702/032/14313230207_1228728860.jpg",
-                "https://cbu01.alicdn.com/img/ibank/2019/010/606/12479606010_1228728860.jpg",
-                "https://img05.jdzj.com/oledit/UploadFile/news2017z/image/20171017/20171017143945124512924070.jpg"
+                "https://img05.jdzj.com/oledit/UploadFile/news2017z/image/20171017/20171017143945124512924070.jpg",
+                "https://cdn.phototourl.com/free/2026-04-02-283bdb37-9452-4e58-8efd-406cd1cf4ef8.webp",
+                "https://cdn.phototourl.com/free/2026-04-02-1846a70e-698d-4b17-bc19-11280eb2a5c0.jpg"
             ],
             desc: `<ul class="feature-list-sm"><li>✨ 高端实木/钢化玻璃材质，提升店铺档次</li><li>✨ 一体化设计，含抽屉、储物柜、烟架酒架</li><li>✨ 适配10-80㎡店铺，免费出图</li><li>✨ 增加陈列档次，促进烟酒消费</li></ul>`,
             specs: ["经济实用型", "高端旗舰型"]
@@ -531,9 +518,9 @@
             name: "连锁品牌整店装修",
             price: "30-50平方 = 30000元 - 50000元",
             images: [
-                "https://pic1.shejiben.com/case/2019/05/20/20190520100453-a5096e07-2s.jpeg",
-                "https://ts2.tc.mm.bing.net/th/id/OIP-C.tohSleGyhXPu5k4iwNLyjgHaFj?rs=1&pid=ImgDetMain",
-                "https://www.mingkaicheng.com/uploads/allimg/220311/1-220311140201.jpg"
+                "https://www.mingkaicheng.com/uploads/allimg/220311/1-220311140201.jpg",
+                "https://cdn.phototourl.com/free/2026-04-02-b42ec9cd-0d17-4222-80d8-7163a935aca7.webp",
+                "https://ts2.tc.mm.bing.net/th/id/OIP-C.tohSleGyhXPu5k4iwNLyjgHaFj?rs=1&pid=ImgDetMain"
             ],
             desc: `<ul class="feature-list-sm"><li>🎨 一站式全包：设计+施工+主材+软装</li><li>🎨 连锁级SI标准，门头/地面/灯光/招牌统一</li><li>🎨 15天高效完工，不影响开业计划</li><li>🎨 提供3D效果图，所见即所得</li></ul>`,
             specs: ["基础简装", "品牌精装"]
@@ -543,8 +530,9 @@
             name: "智能监控安防系统",
             price: "2000元 - 5800元",
             images: [
-                "https://cdn.phototourl.com/free/2026-03-31-817787c0-917b-48a6-a694-b726a47dcb12.png",
-                "https://placehold.co/600x400?text=监控系统图2"
+                "https://cdn.phototourl.com/free/2026-04-02-5931b618-28cb-44f1-9b17-64bed9cbf748.jpg",
+                "https://cdn.phototourl.com/free/2026-04-02-aafaf0c8-309c-40e9-b7bf-73eae33d278a.jpg",
+                "https://cdn.phototourl.com/free/2026-04-02-a653a7b2-bd2d-48d6-a1c9-1bf751903d4a.jpg"
             ],
             desc: `<ul class="feature-list-sm"><li>📹 400万超清红外夜视，手机远程查看</li><li>📹 AI人形侦测，异常报警推送</li><li>📹 30天云存储+硬盘录像双备份</li><li>📹 防盗防损，开店安心</li></ul>`,
             specs: ["4路套装", "8路高清套装"]
@@ -554,15 +542,16 @@
             name: "关东煮/热食设备",
             price: "1500元 - 4500元",
             images: [
-                "https://cdn.phototourl.com/free/2026-03-31-82c3e5fa-4b9f-4904-9ae4-a92519efe3a0.png",
-                "https://placehold.co/600x400?text=热食设备"
+                "https://cdn.phototourl.com/free/2026-04-02-c2e3fc43-c3c4-4734-a5cc-990b29e232b4.jpg",
+                "https://cdn.phototourl.com/member/2026-04-02-8511e834-d3eb-4343-896b-eab61b3b591c.jpg",
+                "https://cdn.phototourl.com/member/2026-04-02-107f16eb-b348-455e-8423-843dbb3c4d23.jpg"
             ],
             desc: `<ul class="feature-list-sm"><li>🍢 关东煮机+热狗肠机+蒸包柜组合</li><li>🍢 食品级不锈钢，温控精准</li><li>🍢 提升鲜食毛利50%，吸引客流</li><li>🍢 易清洁设计，操作简单</li></ul>`,
             specs: ["标准三孔", "豪华五孔+蒸包"]
         }
     ];
 
-    // 轮播图片（图1-4）
+    // 轮播图片（置顶滑动四张，保持不变）
     const carouselImages = [
         "https://cdn.phototourl.com/free/2026-03-31-83401c57-9d16-48e6-9d39-e8ca9c4067bf.png",
         "https://cdn.phototourl.com/free/2026-03-31-817787c0-917b-48a6-a694-b726a47dcb12.png",
@@ -578,7 +567,6 @@
         productDatabase.forEach(prod => {
             const card = document.createElement("div");
             card.className = "product-card";
-            // 多图网格
             let galleryHtml = `<div class="image-gallery">`;
             prod.images.forEach((imgUrl, idx) => {
                 galleryHtml += `<img class="gallery-thumb" src="${imgUrl}" alt="${prod.name}图${idx+1}" 
@@ -586,7 +574,6 @@
             });
             galleryHtml += `</div>`;
 
-            // 规格下拉
             let specHtml = `<select class="spec-select">`;
             if (prod.specs && prod.specs.length) {
                 prod.specs.forEach(spec => { specHtml += `<option value="${spec}">${spec}</option>`; });
@@ -620,7 +607,6 @@
 
     function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
 
-    // 询价模态框
     const inquiryModal = document.getElementById("inquiryModal");
     function openInquiryForm(productName = "") {
         document.getElementById("inqProduct").value = productName;
@@ -639,7 +625,6 @@
         document.getElementById("inqMsg").value = "";
     });
 
-    // 图片放大
     function openImageModal(imgSrc) {
         const modal = document.getElementById("imageModal");
         const enlarged = document.getElementById("enlargedImage");
@@ -649,11 +634,8 @@
     document.getElementById("closeImageBtn").addEventListener("click", () => {
         document.getElementById("imageModal").style.display = "none";
     });
-
-    // 浮动按钮事件
     document.getElementById("floatQuoteBtn").addEventListener("click", () => openInquiryForm("全店设备报价"));
 
-    // 轮播图逻辑
     let currentIndex = 0;
     let autoInterval;
     function buildCarousel() {
@@ -692,12 +674,10 @@
     document.getElementById("prevBtn")?.addEventListener("click", prevSlide);
     document.getElementById("nextBtn")?.addEventListener("click", nextSlide);
 
-    // 初始化
     function init() {
         renderProducts();
         buildCarousel();
         resetAutoPlay();
-        // 点击模态框背景关闭
         window.addEventListener("click", (e) => { if(e.target === inquiryModal) closeInquiryModal(); if(e.target === document.getElementById("imageModal")) document.getElementById("imageModal").style.display="none"; });
     }
     init();
