@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>便利店一站式全套厂家货源 | 专业设备采购</title>
+    <title>老六便利店一站式资源网 | 专业设备 / 共享资源</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            font-family: 'Segoe UI', 'Quicksand', 'Poppins', 'Microsoft YaHei', 'PingFang SC', sans-serif;
         }
 
         body {
@@ -35,20 +35,31 @@
             box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(4px);
         }
+        /* 主标题：年轻活泼，阳光渐变色 */
         .hero-section h1 {
             font-size: 2.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #b91c1c, #2b6e3c, #0f4c81);
+            background: linear-gradient(135deg, #FF8C00, #FFD700, #32CD32, #FF69B4);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             letter-spacing: 2px;
             margin-bottom: 12px;
+            font-family: 'Quicksand', 'Poppins', 'Segoe UI', sans-serif;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.05);
         }
+        /* 副标题：活泼圆润，阳光橙色 */
         .hero-section p {
-            font-size: 1.2rem;
-            color: #2c3e50;
-            font-weight: 500;
+            font-size: 1.3rem;
+            color: #FF8C42;
+            font-weight: 600;
+            background: rgba(255,248,225,0.7);
+            display: inline-block;
+            padding: 6px 24px;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+            font-family: 'Quicksand', 'Poppins', sans-serif;
+            letter-spacing: 1px;
         }
         .hero-badge {
             display: inline-block;
@@ -335,9 +346,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-        .video-desc p {
-            margin-bottom: 8px;
-        }
         .video-desc .highlight {
             color: #c72a2a;
             font-weight: bold;
@@ -459,8 +467,8 @@
 <body>
 <div class="main-container">
     <div class="hero-section">
-        <h1>🏪 便利店一站式全套厂家货源</h1>
-        <p>源头直供 · 整店输出 · 终身售后</p>
+        <h1>🏪 老六便利店一站式资源网 / 专业设备 / 共享资源</h1>
+        <p>DIY开店，自己也是连锁店</p>
         <div class="hero-badge"><i class="fas fa-truck-fast"></i> 全国配送 · 免费设计布局</div>
     </div>
 
@@ -542,8 +550,7 @@
 </div>
 
 <script>
-    // ======================= 产品数据 =======================
-    // 原有7个设备 + 新增2个（便利店+快递驿站、便利店+社区团购）共9个，形成整齐九宫格
+    // ======================= 产品数据（共9个，保持九宫格） =======================
     const productDatabase = [
         {
             id: "pos_sys",
@@ -629,7 +636,6 @@
             desc: `<ul class="feature-list-sm"><li>🍢 关东煮机+热狗肠机+蒸包柜组合</li><li>🍢 食品级不锈钢，温控精准</li><li>🍢 提升鲜食毛利50%，吸引客流</li><li>🍢 易清洁设计，操作简单</li></ul>`,
             specs: ["标准三孔", "豪华五孔+蒸包"]
         },
-        // ========== 新增项目1：便利店+快递驿站 ==========
         {
             id: "express_station",
             name: "便利店+快递驿站",
@@ -642,7 +648,6 @@
             desc: `<ul class="feature-list-sm"><li>📦 代收代寄包裹，引流增收两不误</li><li>📦 对接主流快递系统，操作简单</li><li>📦 增加顾客进店频次，带动商品销售</li><li>📦 提供标准化货架+面单打印设备</li></ul>`,
             specs: ["基础驿站版", "旗舰综合版"]
         },
-        // ========== 新增项目2：便利店+社区团购 ==========
         {
             id: "community_group",
             name: "便利店+社区团购",
