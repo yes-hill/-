@@ -26,7 +26,6 @@
             padding: 20px 24px 50px;
         }
 
-        /* 头部区域 */
         .hero-section {
             text-align: center;
             margin-bottom: 35px;
@@ -35,7 +34,6 @@
             border-radius: 70px;
             box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(4px);
-            position: relative;
         }
         .hero-section h1 {
             font-size: 2.8rem;
@@ -63,7 +61,6 @@
             color: #2d2f36;
         }
 
-        /* 轮播 */
         .carousel-wrapper {
             position: relative;
             width: 100%;
@@ -151,7 +148,6 @@
             font-weight: 500;
         }
 
-        /* 产品网格 */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
@@ -171,7 +167,6 @@
             transform: translateY(-8px);
             box-shadow: 0 28px 38px rgba(0, 0, 0, 0.25);
         }
-        /* 多图网格区域 */
         .image-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -268,7 +263,6 @@
             transform: scale(0.98);
         }
 
-        /* 优势网格 */
         .advantage-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -294,7 +288,6 @@
             margin-bottom: 12px;
         }
 
-        /* 视频展示区域 */
         .video-section {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 48px;
@@ -350,7 +343,6 @@
             font-weight: bold;
         }
 
-        /* 底部联系栏 */
         .contact-footer {
             background: linear-gradient(110deg, #0a2f44, #1f4e3c);
             border-radius: 48px;
@@ -376,7 +368,6 @@
             letter-spacing: 2px;
         }
 
-        /* 模态框（询价表单 + 图片放大） */
         .modal {
             display: none;
             position: fixed;
@@ -473,7 +464,6 @@
         <div class="hero-badge"><i class="fas fa-truck-fast"></i> 全国配送 · 免费设计布局</div>
     </div>
 
-    <!-- 轮播区 -->
     <div class="carousel-wrapper">
         <div class="carousel-container">
             <div class="carousel-slide" id="carouselSlide"></div>
@@ -489,7 +479,6 @@
     </div>
     <div id="productsGrid" class="products-grid"></div>
 
-    <!-- 新增视频区域：便利店云值守系统介绍 -->
     <div class="video-section">
         <div class="video-title">
             <i class="fas fa-video"></i>
@@ -513,7 +502,6 @@
         </div>
     </div>
 
-    <!-- 优势 -->
     <div class="advantage-grid">
         <div class="advantage-card"><i class="fas fa-hand-holding-usd"></i><h4>厂家底价</h4><p>去中间商，采购成本直降30%</p></div>
         <div class="advantage-card"><i class="fas fa-boxes"></i><h4>一站式配齐</h4><p>收银+货架+冰柜+装修+软装</p></div>
@@ -530,10 +518,8 @@
     </div>
 </div>
 
-<!-- 浮动按钮 -->
 <button class="float-quote" id="floatQuoteBtn"><i class="fas fa-file-invoice-dollar"></i> 获取报价方案</button>
 
-<!-- 通用模态框（询价表单） -->
 <div id="inquiryModal" class="modal">
     <div class="modal-content">
         <h3><i class="fas fa-envelope"></i> 快速询价</h3>
@@ -548,7 +534,6 @@
     </div>
 </div>
 
-<!-- 图片放大模态框 -->
 <div id="imageModal" class="modal" style="background: rgba(0,0,0,0.9);">
     <div class="image-modal-content" style="text-align:center; position:relative;">
         <img id="enlargedImage" src="" alt="放大图片" style="max-width:90vw; max-height:85vh; border-radius:20px;">
@@ -557,7 +542,8 @@
 </div>
 
 <script>
-    // ======================= 产品数据（已按您提供的新链接全部更新） =======================
+    // ======================= 产品数据 =======================
+    // 原有7个设备 + 新增2个（便利店+快递驿站、便利店+社区团购）共9个，形成整齐九宫格
     const productDatabase = [
         {
             id: "pos_sys",
@@ -642,10 +628,35 @@
             ],
             desc: `<ul class="feature-list-sm"><li>🍢 关东煮机+热狗肠机+蒸包柜组合</li><li>🍢 食品级不锈钢，温控精准</li><li>🍢 提升鲜食毛利50%，吸引客流</li><li>🍢 易清洁设计，操作简单</li></ul>`,
             specs: ["标准三孔", "豪华五孔+蒸包"]
+        },
+        // ========== 新增项目1：便利店+快递驿站 ==========
+        {
+            id: "express_station",
+            name: "便利店+快递驿站",
+            price: "合作方案 详询客服",
+            images: [
+                "https://cdn.phototourl.com/member/2026-04-03-7b553c86-cafd-4096-a427-27bfbd86b676.png",
+                "https://cdn.phototourl.com/member/2026-04-03-77d25528-d893-4820-b4c8-4d70e049124b.png",
+                "https://cdn.phototourl.com/member/2026-04-03-aad0892a-b890-4e4a-b218-6f12d228c0cd.png"
+            ],
+            desc: `<ul class="feature-list-sm"><li>📦 代收代寄包裹，引流增收两不误</li><li>📦 对接主流快递系统，操作简单</li><li>📦 增加顾客进店频次，带动商品销售</li><li>📦 提供标准化货架+面单打印设备</li></ul>`,
+            specs: ["基础驿站版", "旗舰综合版"]
+        },
+        // ========== 新增项目2：便利店+社区团购 ==========
+        {
+            id: "community_group",
+            name: "便利店+社区团购",
+            price: "合作方案 详询客服",
+            images: [
+                "https://cdn.phototourl.com/member/2026-04-03-1a741904-4ba4-42b5-9a12-43a4c40f0a73.png",
+                "https://cdn.phototourl.com/member/2026-04-03-ed2a42dd-d14f-40c3-81bc-dceeeb8f8e05.png",
+                "https://cdn.phototourl.com/member/2026-04-03-4f4cb4d6-b397-4bf2-84fb-0930694566aa.png"
+            ],
+            desc: `<ul class="feature-list-sm"><li>🥬 成为社区团长，每日爆品拼团</li><li>🥬 线上预售+线下自提，0库存风险</li><li>🥬 平台供应链支持，佣金实时到账</li><li>🥬 免费团购小程序，一键建群分享</li></ul>`,
+            specs: ["团长入门版", "区域合伙人版"]
         }
     ];
 
-    // 轮播图片（置顶滑动四张，保持不变）
     const carouselImages = [
         "https://cdn.phototourl.com/free/2026-03-31-83401c57-9d16-48e6-9d39-e8ca9c4067bf.png",
         "https://cdn.phototourl.com/free/2026-03-31-817787c0-917b-48a6-a694-b726a47dcb12.png",
@@ -653,7 +664,6 @@
         "https://cdn.phototourl.com/free/2026-03-31-203869b5-cbe5-4830-95b8-0bac1c008626.jpg"
     ];
 
-    // 渲染产品网格（支持多图）
     function renderProducts() {
         const grid = document.getElementById("productsGrid");
         if (!grid) return;
@@ -701,7 +711,6 @@
 
     function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
 
-    // 询价模态框
     const inquiryModal = document.getElementById("inquiryModal");
     function openInquiryForm(productName = "") {
         document.getElementById("inqProduct").value = productName;
@@ -720,7 +729,6 @@
         document.getElementById("inqMsg").value = "";
     });
 
-    // 图片放大
     function openImageModal(imgSrc) {
         const modal = document.getElementById("imageModal");
         const enlarged = document.getElementById("enlargedImage");
@@ -730,11 +738,8 @@
     document.getElementById("closeImageBtn").addEventListener("click", () => {
         document.getElementById("imageModal").style.display = "none";
     });
-
-    // 浮动按钮事件
     document.getElementById("floatQuoteBtn").addEventListener("click", () => openInquiryForm("全店设备报价"));
 
-    // 轮播图逻辑
     let currentIndex = 0;
     let autoInterval;
     function buildCarousel() {
@@ -773,12 +778,10 @@
     document.getElementById("prevBtn")?.addEventListener("click", prevSlide);
     document.getElementById("nextBtn")?.addEventListener("click", nextSlide);
 
-    // 初始化
     function init() {
         renderProducts();
         buildCarousel();
         resetAutoPlay();
-        // 点击模态框背景关闭
         window.addEventListener("click", (e) => { if(e.target === inquiryModal) closeInquiryModal(); if(e.target === document.getElementById("imageModal")) document.getElementById("imageModal").style.display="none"; });
     }
     init();
