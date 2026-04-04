@@ -42,7 +42,7 @@
             font-weight: 800;
             font-family: 'Quicksand', 'Poppins', 'Segoe UI', sans-serif;
             letter-spacing: 4px;
-            color: #ffffff;  /* 字体纯白，不发亮 */
+            color: #ffffff;
             background: none;
             -webkit-background-clip: unset;
             background-clip: unset;
@@ -51,10 +51,8 @@
             padding: 0 20px;
             border-radius: 60px;
             position: relative;
-            /* 关键：外围灯泡光晕，字体本身无发光 */
             animation: bulbGlow 1.2s ease-in-out infinite alternate;
         }
-        /* 外围光晕模拟灯泡围绕 */
         @keyframes bulbGlow {
             0% {
                 box-shadow: 
@@ -73,7 +71,6 @@
                 text-shadow: none;
             }
         }
-        /* 额外添加小光点围绕效果（模拟灯泡） */
         .hero-section h1::before {
             content: '';
             position: absolute;
@@ -97,7 +94,6 @@
             100% { opacity: 0.9; filter: blur(12px); }
         }
 
-        /* 副标题也加一点微光，但不喧宾夺主 */
         .hero-section p {
             font-size: 1.3rem;
             color: #FFD966;
@@ -122,7 +118,6 @@
             color: #2d2f36;
         }
 
-        /* 其他样式保持不变 */
         .carousel-wrapper {
             position: relative;
             width: 100%;
@@ -713,134 +708,6 @@
         }
     ];
 
+    // ======================= 置顶滑动图片（已更换为新的5张） =======================
     const carouselImages = [
-        "https://cdn.phototourl.com/free/2026-03-31-83401c57-9d16-48e6-9d39-e8ca9c4067bf.png",
-        "https://cdn.phototourl.com/free/2026-03-31-817787c0-917b-48a6-a694-b726a47dcb12.png",
-        "https://cdn.phototourl.com/free/2026-03-31-82c3e5fa-4b9f-4904-9ae4-a92519efe3a0.png",
-        "https://cdn.phototourl.com/free/2026-03-31-203869b5-cbe5-4830-95b8-0bac1c008626.jpg"
-    ];
-
-    function renderProducts() {
-        const grid = document.getElementById("productsGrid");
-        if (!grid) return;
-        grid.innerHTML = "";
-        productDatabase.forEach(prod => {
-            const card = document.createElement("div");
-            card.className = "product-card";
-            let galleryHtml = `<div class="image-gallery">`;
-            prod.images.forEach((imgUrl, idx) => {
-                galleryHtml += `<img class="gallery-thumb" src="${imgUrl}" alt="${prod.name}图${idx+1}" 
-                    onclick="openImageModal('${imgUrl}')" onerror="this.src='https://placehold.co/200x200?text=图'">`;
-            });
-            galleryHtml += `</div>`;
-
-            let specHtml = `<select class="spec-select">`;
-            if (prod.specs && prod.specs.length) {
-                prod.specs.forEach(spec => { specHtml += `<option value="${spec}">${spec}</option>`; });
-            } else {
-                specHtml += `<option>标准配置</option>`;
-            }
-            specHtml += `</select>`;
-
-            card.innerHTML = `
-                ${galleryHtml}
-                <div class="card-content">
-                    <div class="card-title">
-                        ${escapeHtml(prod.name)}
-                        <span class="price-tag">${escapeHtml(prod.price)}</span>
-                    </div>
-                    ${specHtml}
-                    <div class="product-desc">${prod.desc}</div>
-                    <button class="inquiry-btn" data-name="${escapeHtml(prod.name)}"><i class="fas fa-comment-dots"></i> 立即询价</button>
-                </div>
-            `;
-            grid.appendChild(card);
-        });
-
-        document.querySelectorAll(".inquiry-btn").forEach(btn => {
-            btn.addEventListener("click", (e) => {
-                const productName = btn.getAttribute("data-name");
-                openInquiryForm(productName);
-            });
-        });
-    }
-
-    function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
-
-    const inquiryModal = document.getElementById("inquiryModal");
-    function openInquiryForm(productName = "") {
-        document.getElementById("inqProduct").value = productName;
-        inquiryModal.style.display = "flex";
-    }
-    function closeInquiryModal() { inquiryModal.style.display = "none"; }
-    document.getElementById("closeInquiryBtn").addEventListener("click", closeInquiryModal);
-    document.getElementById("submitInquiryBtn").addEventListener("click", () => {
-        const name = document.getElementById("inqName").value;
-        const phone = document.getElementById("inqPhone").value;
-        if (!name || !phone) { alert("请填写姓名和联系电话"); return; }
-        alert(`尊敬的 ${name}，您的询价已提交！顾问将在2小时内联系您 ${phone}，感谢信任。`);
-        closeInquiryModal();
-        document.getElementById("inqName").value = "";
-        document.getElementById("inqPhone").value = "";
-        document.getElementById("inqMsg").value = "";
-    });
-
-    function openImageModal(imgSrc) {
-        const modal = document.getElementById("imageModal");
-        const enlarged = document.getElementById("enlargedImage");
-        enlarged.src = imgSrc;
-        modal.style.display = "flex";
-    }
-    document.getElementById("closeImageBtn").addEventListener("click", () => {
-        document.getElementById("imageModal").style.display = "none";
-    });
-    document.getElementById("floatQuoteBtn").addEventListener("click", () => openInquiryForm("全店设备报价"));
-
-    let currentIndex = 0;
-    let autoInterval;
-    function buildCarousel() {
-        const slideWrap = document.getElementById("carouselSlide");
-        if (!slideWrap) return;
-        slideWrap.innerHTML = "";
-        carouselImages.forEach((src, idx) => {
-            const div = document.createElement("div");
-            div.className = "slide-item";
-            const img = document.createElement("img");
-            img.src = src; img.alt = `场景${idx+1}`;
-            img.onerror = function() { this.src = "https://placehold.co/1200x420?text=场景示意"; };
-            div.appendChild(img);
-            slideWrap.appendChild(div);
-        });
-        const dotsDiv = document.getElementById("dotsContainer");
-        dotsDiv.innerHTML = "";
-        for (let i = 0; i < carouselImages.length; i++) {
-            const dot = document.createElement("span");
-            dot.classList.add("dot");
-            if (i === currentIndex) dot.classList.add("active");
-            dot.addEventListener("click", () => { currentIndex = i; updateCarousel(); resetAutoPlay(); });
-            dotsDiv.appendChild(dot);
-        }
-        updateCarousel();
-    }
-    function updateCarousel() {
-        const slideWrap = document.getElementById("carouselSlide");
-        if (slideWrap) slideWrap.style.transform = `translateX(-${currentIndex * 100}%)`;
-        const dots = document.querySelectorAll(".dot");
-        dots.forEach((dot, idx) => { if (idx === currentIndex) dot.classList.add("active"); else dot.classList.remove("active"); });
-    }
-    function nextSlide() { currentIndex = (currentIndex + 1) % carouselImages.length; updateCarousel(); resetAutoPlay(); }
-    function prevSlide() { currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length; updateCarousel(); resetAutoPlay(); }
-    function resetAutoPlay() { if (autoInterval) clearInterval(autoInterval); autoInterval = setInterval(() => nextSlide(), 4500); }
-    document.getElementById("prevBtn")?.addEventListener("click", prevSlide);
-    document.getElementById("nextBtn")?.addEventListener("click", nextSlide);
-
-    function init() {
-        renderProducts();
-        buildCarousel();
-        resetAutoPlay();
-        window.addEventListener("click", (e) => { if(e.target === inquiryModal) closeInquiryModal(); if(e.target === document.getElementById("imageModal")) document.getElementById("imageModal").style.display="none"; });
-    }
-    init();
-</script>
-</body>
-</html>
+        "https://cdn.phototourl.com/member/2026-04-04-d68341b8-0b1e
