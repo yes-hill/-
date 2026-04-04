@@ -36,7 +36,6 @@
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        /* 霓虹灯效果：灯泡围绕发光，字体本身不发亮 */
         .hero-section h1 {
             font-size: 2.8rem;
             font-weight: 800;
@@ -44,8 +43,6 @@
             letter-spacing: 4px;
             color: #ffffff;
             background: none;
-            -webkit-background-clip: unset;
-            background-clip: unset;
             margin-bottom: 12px;
             display: inline-block;
             padding: 0 20px;
@@ -60,7 +57,6 @@
                     0 0 10px 5px rgba(255, 0, 222, 0.3),
                     0 0 20px 8px rgba(0, 255, 255, 0.2),
                     0 0 30px 12px rgba(255, 255, 0, 0.1);
-                text-shadow: none;
             }
             100% {
                 box-shadow: 
@@ -68,7 +64,6 @@
                     0 0 25px 12px rgba(255, 0, 222, 0.5),
                     0 0 40px 18px rgba(0, 255, 255, 0.4),
                     0 0 60px 25px rgba(255, 255, 0, 0.2);
-                text-shadow: none;
             }
         }
         .hero-section h1::before {
@@ -105,7 +100,6 @@
             backdrop-filter: blur(4px);
             font-family: 'Quicksand', 'Poppins', sans-serif;
             letter-spacing: 1px;
-            text-shadow: 0 0 2px rgba(255,200,0,0.5);
         }
         .hero-badge {
             display: inline-block;
@@ -710,4 +704,139 @@
 
     // ======================= 置顶滑动图片（已更换为新的5张） =======================
     const carouselImages = [
-        "https://cdn.phototourl.com/member/2026-04-04-d68341b8-0b1e
+        "https://cdn.phototourl.com/member/2026-04-04-d68341b8-0b1e-4679-b87f-566cede49c74.jpg",
+        "https://cdn.phototourl.com/member/2026-04-04-7e9b5bb5-f3da-4242-9122-476bc43803fd.jpg",
+        "https://cdn.phototourl.com/member/2026-04-04-9fd16efa-a6ae-4e71-a9d7-1ed5dca5afa8.jpg",
+        "https://cdn.phototourl.com/free/2026-03-31-817787c0-917b-48a6-a694-b726a47dcb12.png",
+        "https://cdn.phototourl.com/free/2026-03-31-83401c57-9d16-48e6-9d39-e8ca9c4067bf.png"
+    ];
+
+    // 渲染产品网格
+    function renderProducts() {
+        const grid = document.getElementById("productsGrid");
+        if (!grid) return;
+        grid.innerHTML = "";
+        productDatabase.forEach(prod => {
+            const card = document.createElement("div");
+            card.className = "product-card";
+            let galleryHtml = `<div class="image-gallery">`;
+            prod.images.forEach((imgUrl, idx) => {
+                galleryHtml += `<img class="gallery-thumb" src="${imgUrl}" alt="${prod.name}图${idx+1}" 
+                    onclick="openImageModal('${imgUrl}')" onerror="this.src='https://placehold.co/200x200?text=图'">`;
+            });
+            galleryHtml += `</div>`;
+
+            let specHtml = `<select class="spec-select">`;
+            if (prod.specs && prod.specs.length) {
+                prod.specs.forEach(spec => { specHtml += `<option value="${spec}">${spec}</option>`; });
+            } else {
+                specHtml += `<option>标准配置</option>`;
+            }
+            specHtml += `</select>`;
+
+            card.innerHTML = `
+                ${galleryHtml}
+                <div class="card-content">
+                    <div class="card-title">
+                        ${escapeHtml(prod.name)}
+                        <span class="price-tag">${escapeHtml(prod.price)}</span>
+                    </div>
+                    ${specHtml}
+                    <div class="product-desc">${prod.desc}</div>
+                    <button class="inquiry-btn" data-name="${escapeHtml(prod.name)}"><i class="fas fa-comment-dots"></i> 立即询价</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        document.querySelectorAll(".inquiry-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                const productName = btn.getAttribute("data-name");
+                openInquiryForm(productName);
+            });
+        });
+    }
+
+    function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+
+    // 询价模态框
+    const inquiryModal = document.getElementById("inquiryModal");
+    function openInquiryForm(productName = "") {
+        document.getElementById("inqProduct").value = productName;
+        inquiryModal.style.display = "flex";
+    }
+    function closeInquiryModal() { inquiryModal.style.display = "none"; }
+    document.getElementById("closeInquiryBtn").addEventListener("click", closeInquiryModal);
+    document.getElementById("submitInquiryBtn").addEventListener("click", () => {
+        const name = document.getElementById("inqName").value;
+        const phone = document.getElementById("inqPhone").value;
+        if (!name || !phone) { alert("请填写姓名和联系电话"); return; }
+        alert(`尊敬的 ${name}，您的询价已提交！顾问将在2小时内联系您 ${phone}，感谢信任。`);
+        closeInquiryModal();
+        document.getElementById("inqName").value = "";
+        document.getElementById("inqPhone").value = "";
+        document.getElementById("inqMsg").value = "";
+    });
+
+    // 图片放大
+    function openImageModal(imgSrc) {
+        const modal = document.getElementById("imageModal");
+        const enlarged = document.getElementById("enlargedImage");
+        enlarged.src = imgSrc;
+        modal.style.display = "flex";
+    }
+    document.getElementById("closeImageBtn").addEventListener("click", () => {
+        document.getElementById("imageModal").style.display = "none";
+    });
+    document.getElementById("floatQuoteBtn").addEventListener("click", () => openInquiryForm("全店设备报价"));
+
+    // 轮播图逻辑
+    let currentIndex = 0;
+    let autoInterval;
+    function buildCarousel() {
+        const slideWrap = document.getElementById("carouselSlide");
+        if (!slideWrap) return;
+        slideWrap.innerHTML = "";
+        carouselImages.forEach((src, idx) => {
+            const div = document.createElement("div");
+            div.className = "slide-item";
+            const img = document.createElement("img");
+            img.src = src; img.alt = `场景${idx+1}`;
+            img.onerror = function() { this.src = "https://placehold.co/1200x420?text=场景示意"; };
+            div.appendChild(img);
+            slideWrap.appendChild(div);
+        });
+        const dotsDiv = document.getElementById("dotsContainer");
+        dotsDiv.innerHTML = "";
+        for (let i = 0; i < carouselImages.length; i++) {
+            const dot = document.createElement("span");
+            dot.classList.add("dot");
+            if (i === currentIndex) dot.classList.add("active");
+            dot.addEventListener("click", () => { currentIndex = i; updateCarousel(); resetAutoPlay(); });
+            dotsDiv.appendChild(dot);
+        }
+        updateCarousel();
+    }
+    function updateCarousel() {
+        const slideWrap = document.getElementById("carouselSlide");
+        if (slideWrap) slideWrap.style.transform = `translateX(-${currentIndex * 100}%)`;
+        const dots = document.querySelectorAll(".dot");
+        dots.forEach((dot, idx) => { if (idx === currentIndex) dot.classList.add("active"); else dot.classList.remove("active"); });
+    }
+    function nextSlide() { currentIndex = (currentIndex + 1) % carouselImages.length; updateCarousel(); resetAutoPlay(); }
+    function prevSlide() { currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length; updateCarousel(); resetAutoPlay(); }
+    function resetAutoPlay() { if (autoInterval) clearInterval(autoInterval); autoInterval = setInterval(() => nextSlide(), 4500); }
+    document.getElementById("prevBtn")?.addEventListener("click", prevSlide);
+    document.getElementById("nextBtn")?.addEventListener("click", nextSlide);
+
+    // 初始化
+    function init() {
+        renderProducts();
+        buildCarousel();
+        resetAutoPlay();
+        window.addEventListener("click", (e) => { if(e.target === inquiryModal) closeInquiryModal(); if(e.target === document.getElementById("imageModal")) document.getElementById("imageModal").style.display="none"; });
+    }
+    init();
+</script>
+</body>
+</html>
